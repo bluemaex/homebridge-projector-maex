@@ -1,0 +1,24 @@
+{
+  "name": "homebridge-projector-maex",
+  "version": "0.1.0",
+  "description": "homebridge plugin for controlling projector via lirc and fritzbox",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=6.0.0",
+    "homebridge": ">=0.4.0"
+  },
+  "author": {
+    "name": "Max Stockner <mail@bluemaex.de>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bluemaex/homebridge-projector-maex.git"
+  },
+  "dependencies": {
+    "ssh-exec": "^1.3.0",
+    "smartfritz-promise": "^0.6.1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "bridge": {
+    "name": "homebridge-maex",
+    "username": "DE:AD:BE:EF:BA:BE",
+    "port": 51826,
+    "pin": "031-45-154"
+  },
+  "description": "homebridge-projector-maex",
+  "hint": "Yes it is weird.",
+  "accessories": [
+    {
+      "accessory": "ProjectorMaex",
+      "name": "Projector",
+      "treshold": 50,
+      "switchId": "",
+      "on": "irsend SEND_ONCE acer2 KEY_POWER ; sleep 1 ; irsend SEND_ONCE acer2 KEY_POWER",
+      "off": "irsend SEND_ONCE acer2 KEY_POWER ; sleep 1 ; irsend SEND_ONCE acer2 KEY_POWER",
+      "fritz": {
+        "username": "",
+        "password": "",
+      },
+      "ssh": {
+        "host": "",
+        "port": 22,
+        "user": "",
+        "password": ""
+      }
+    }
+  ]
+}
