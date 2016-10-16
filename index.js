@@ -47,7 +47,7 @@ ProjectorAccessory.prototype.sendSshCommand = function(command) {
 }
 
 ProjectorAccessory.prototype.getState = function(callback) {
-  this.getFritzEnergy().then(state => { callback(null, 1) })
+  this.getFritzEnergy().then(state => { callback(null, state) })
       .catch(error => { callback(error || new Error(`Error getting state of ${this.name}`)) })
 }
 
