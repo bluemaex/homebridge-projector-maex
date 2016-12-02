@@ -19,12 +19,6 @@
         "username": "",
         "password": "",
       },
-      "ssh": {
-        "host": "",
-        "port": 22,
-        "user": "",
-        "password": ""
-      }
     }
   ]
 }

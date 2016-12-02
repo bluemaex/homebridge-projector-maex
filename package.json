@@ -1,6 +1,6 @@
 {
   "name": "homebridge-projector-maex",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "homebridge plugin for controlling a projector via infrared (power state is determined via power consumption)",
   "license": "MIT",
   "keywords": [

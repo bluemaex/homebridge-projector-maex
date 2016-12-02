@@ -1,5 +1,5 @@
-const ssh = require('ssh-exec')
-const fritz = require('smartfritz-promise')
+const fritz = require('fritzapi')
+const exec = require('child_process').exec
 let Service, Characteristic
 
 module.exports = function(homebridge) {
@@ -30,18 +30,15 @@ ProjectorAccessory.prototype.getFritzEnergy = function() {
       })
 }
 
-ProjectorAccessory.prototype.sendSshCommand = function(command) {  
+ProjectorAccessory.prototype.sendCommand = function(command) {
   return new Promise((resolve, reject) => {
-    const stream = ssh(command, this.config.ssh)
-    
-    stream.on('error',  err => {
-      this.log(`Error occured: ${error}`)
-      reject(err || new Error(`Error executing ${command}`))
-    })
-
-    stream.on('finish', () => {
-      this.log(`Executed command "${command}" successfully`)
-      resolve()
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(error)
+      } else {
+        this.log(`Executed command "${command}" successfully`)
+        resolve()
+      }
     })
   })
 }
@@ -57,7 +54,7 @@ ProjectorAccessory.prototype.setState = function(power, callback) {
   this.getFritzEnergy().then(state => {
     if(power !== state ) {
       this.log(`state of projector is ' + state + ', requested to switch to ' + power`)
-      this.sendSshCommand(command).then(() => { callback() })
+      this.sendCommand(command).then(() => { callback() })
     } else {
       this.log(`already in state ${state}, ignoring`)
       callback()
